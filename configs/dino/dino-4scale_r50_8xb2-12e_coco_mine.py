@@ -1,20 +1,9 @@
 _base_ = [
-    '../_base_/datasets/coco_PIXray_detection.py', '../_base_/default_runtime.py'
+    '../_base_/datasets/coco_detection.py', '../_base_/default_runtime.py'
 ]
-# -------------------------------------------------#
-# 记录一下更改内容
-# 第一，改上面的数据集
-# 第二，将frozen_block=1注释掉
-# 第三，RandomChoiceResize中的图片比例不符合320*320，需要更改
-# 第四，类别数从80-->15
-# 第五，由于只有一张显卡，所以auto_scale_lr的batch_size=2
-# 第六，改为加载全部预训练模型load_from
-# 后续可能需要更改学习率，num_workers,num_queries,以及多少轮测试与保存等
-# -------------------------------------------------#
-
 model = dict(
     type='DINO',
-    num_queries=900,  # num_matching_queries
+    num_queries=85,  # num_matching_queries
     with_box_refine=True,
     as_two_stage=True,
     data_preprocessor=dict(
@@ -28,7 +17,7 @@ model = dict(
         depth=50,
         num_stages=4,
         out_indices=(1, 2, 3),
-        # frozen_stages=1,
+        frozen_stages=1,
         norm_cfg=dict(type='BN', requires_grad=False),
         norm_eval=True,
         style='pytorch',
@@ -71,7 +60,7 @@ model = dict(
         temperature=20),  # 10000 for DeformDETR
     bbox_head=dict(
         type='DINOHead',
-        num_classes=15,
+        num_classes=80,
         sync_cls_avg_factor=True,
         loss_cls=dict(
             type='FocalLoss',
@@ -112,7 +101,7 @@ train_pipeline = [
                     # scales=[(480, 1333), (512, 1333), (544, 1333), (576, 1333),
                     #         (608, 1333), (640, 1333), (672, 1333), (704, 1333),
                     #         (736, 1333), (768, 1333), (800, 1333)],
-                    scales=[(192, 320), (205, 320), (218, 320), (230, 320),
+scales=[(192, 320), (205, 320), (218, 320), (230, 320),
                             (243, 320), (256, 320), (269, 320), (282, 320),
                             (294, 320), (307, 320), (320, 320)],
                     keep_ratio=True)
@@ -124,19 +113,21 @@ train_pipeline = [
                     # follow the original implement
                     # scales=[(400, 4200), (500, 4200), (600, 4200)],
                     scales=[(160, 1008), (200, 1008), (240, 1008)],
+
                     keep_ratio=True),
                 dict(
                     type='RandomCrop',
                     crop_type='absolute_range',
                     # crop_size=(384, 600),
-                    crop_size=(154, 144),  # 320/800*384 , 600/1333*320
+                    crop_size=(150, 200),  # 320/800*384 , 600/1333*320
+
                     allow_negative_crop=True),
                 dict(
                     type='RandomChoiceResize',
                     # scales=[(480, 1333), (512, 1333), (544, 1333), (576, 1333),
                     #         (608, 1333), (640, 1333), (672, 1333), (704, 1333),
                     #         (736, 1333), (768, 1333), (800, 1333)],
-                    scales=[(192, 320), (205, 320), (218, 320), (230, 320),
+scales=[(192, 320), (205, 320), (218, 320), (230, 320),
                             (243, 320), (256, 320), (269, 320), (282, 320),
                             (294, 320), (307, 320), (320, 320)],
                     keep_ratio=True)
@@ -181,4 +172,4 @@ param_scheduler = [
 # USER SHOULD NOT CHANGE ITS VALUES.
 # base_batch_size = (8 GPUs) x (2 samples per GPU)
 auto_scale_lr = dict(base_batch_size=2)
-load_from = "../dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth"
+load_from = 'E:\D2E\Projects\DINO_mmdet3\pretrained_model\dino-4scale_r50_8xb2-12e_coco_20221202_182705-55b2bba2.pth'

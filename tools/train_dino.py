@@ -14,8 +14,22 @@ from mmdet.utils import setup_cache_size_limit_of_dynamo
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a detector')
-    parser.add_argument('--config', default='../configs/dino/dino-4scale_r50_8xb2-12e_pixray.py', help='train config file path')
-    parser.add_argument('--work-dir', default='../checkpoint/dino/test', help='the dir to save logs and models')
+    # parser.add_argument('--config', default='../configs/dino/dino-4scale_r50_8xb2-12e_pixray_mine.py', help='train config file path')
+    # parser.add_argument('--work-dir', default='E:\D2E\Projects\DINO_mmdet3\checkpoint/dino/swinL_pixray/test', help='the dir to save logs and models')
+
+    # r50 coco
+    # parser.add_argument('--config', default='../configs/dino/dino-4scale_r50_8xb2-12e_coco_mine.py', help='train config file path')
+    # parser.add_argument('--work-dir', default='E:\D2E\Projects\DINO_mmdet3\checkpoint/dino/r50_coco/01', help='the dir to save logs and models')
+
+    # r50 pixray
+    # parser.add_argument('--config', default='../configs/dino/dino-4scale_r50_8xb2-12e_pixray_mine.py', help='train config file path')
+    # parser.add_argument('--work-dir', default='E:\D2E\Projects\DINO_mmdet3\checkpoint/dino/r50_pixray/01', help='the dir to save logs and models')
+
+    # swin-L pixray 整明白了，这里的q100说的是detr中的num_queries的个数，而不是token的个数
+    parser.add_argument('--config', default='../configs/dino/dino-5scale_swin-l_8xb2-12e_pixray_mine_q100.py', help='train config file path')
+    parser.add_argument('--work-dir', default='E:\D2E\Projects\DINO_mmdet3\checkpoint/dino/swinL_pixray_q100/debug', help='the dir to save logs and models')
+    # parser.add_argument('--work-dir', default='../checkpoint/dino/swinL_pixray_q900/bs8', help='the dir to save logs and models')
+
     parser.add_argument(
         '--amp',
         action='store_true',

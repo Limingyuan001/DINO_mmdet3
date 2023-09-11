@@ -188,7 +188,7 @@ class DINO(DeformableDETR):
 
         query = self.query_embedding.weight[:, None, :]
         query = query.repeat(1, bs, 1).transpose(0, 1)
-        if self.training:
+        if self.training: # TODO 搞清楚这里训练和测试过程中reference_points的区别，看懂dn_query_generator的理论基础
             dn_label_query, dn_bbox_query, dn_mask, dn_meta = \
                 self.dn_query_generator(batch_data_samples)
             query = torch.cat([dn_label_query, query], dim=1)

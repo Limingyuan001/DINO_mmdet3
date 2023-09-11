@@ -1,6 +1,6 @@
 <div align="center">
   <img src="resources/mmdet-logo.png" width="600"/>
-  <div>&nbsp;</div>
+  <div> </div>
   <div align="center">
     <b><font size="5">OpenMMLab website</font></b>
     <sup>
@@ -8,7 +8,7 @@
         <i><font size="4">HOT</font></i>
       </a>
     </sup>
-    &nbsp;&nbsp;&nbsp;&nbsp;
+        
     <b><font size="5">OpenMMLab platform</font></b>
     <sup>
       <a href="https://platform.openmmlab.com">
@@ -16,7 +16,7 @@
       </a>
     </sup>
   </div>
-  <div>&nbsp;</div>
+  <div> </div>
 
 [![PyPI](https://img.shields.io/pypi/v/mmdet)](https://pypi.org/project/mmdet)
 [![docs](https://img.shields.io/badge/docs-latest-blue)](https://mmdetection.readthedocs.io/en/latest/)
@@ -80,15 +80,12 @@ The main branch works with **PyTorch 1.8+**.
 - **Modular Design**
 
   We decompose the detection framework into different components and one can easily construct a customized object detection framework by combining different modules.
-
 - **Support of multiple tasks out of box**
 
   The toolbox directly supports multiple detection tasks such as **object detection**, **instance segmentation**, **panoptic segmentation**, and **semi-supervised object detection**.
-
 - **High efficiency**
 
   All basic bbox and mask operations run on GPUs. The training speed is faster than or comparable to other codebases, including [Detectron2](https://github.com/facebookresearch/detectron2), [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark) and [SimpleDet](https://github.com/TuSimple/simpledet).
-
 - **State of the art**
 
   The toolbox stems from the codebase developed by the *MMDet* team, who won [COCO Detection Challenge](http://cocodataset.org/#detection-leaderboard) in 2018, and we keep pushing it forward.
@@ -108,8 +105,9 @@ We are excited to announce our latest work on real-time object recognition tasks
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/rtmdet-an-empirical-study-of-designing-real/object-detection-in-aerial-images-on-dota-1)](https://paperswithcode.com/sota/object-detection-in-aerial-images-on-dota-1?p=rtmdet-an-empirical-study-of-designing-real)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/rtmdet-an-empirical-study-of-designing-real/object-detection-in-aerial-images-on-hrsc2016)](https://paperswithcode.com/sota/object-detection-in-aerial-images-on-hrsc2016?p=rtmdet-an-empirical-study-of-designing-real)
 
+
 | Task                     | Dataset | AP                                   | FPS(TRT FP16 BS1 3090) |
-| ------------------------ | ------- | ------------------------------------ | ---------------------- |
+| -------------------------- | --------- | -------------------------------------- | ------------------------ |
 | Object Detection         | COCO    | 52.8                                 | 322                    |
 | Instance Segmentation    | COCO    | 44.6                                 | 188                    |
 | Rotated Object Detection | DOTA    | 78.9(single-scale)/81.3(multi-scale) | 121                    |
@@ -155,7 +153,6 @@ For detailed user guides and advanced guides, please refer to our [documentation
   - [Useful Tools](https://mmdetection.readthedocs.io/en/latest/user_guides/index.html#useful-tools)
 
   </details>
-
 - Advanced Guides
 
   <details>
